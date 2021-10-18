@@ -37,7 +37,6 @@ export function LoginPage() {
 
         <TextField
           id="empName"
-          autoFocus={true}
           placeholder="Enter employee name"
           onChange={setEmpNameCallback}
           value={empName}

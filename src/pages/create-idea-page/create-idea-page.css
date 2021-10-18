@@ -1,0 +1,45 @@
+.create-idea-page {
+  max-width: 1024px;
+  flex: 1;
+}
+
+.create-idea-page .create-idea-page-header {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 16px;
+  align-items: center;
+}
+
+.create-idea-page .create-idea-page-footer {
+  display: flex;
+  justify-content: center;
+}
+
+.create-idea-page .create-idea-page-header > div:last-child {
+  margin-left: 16px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.create-idea-page > div {
+  padding: 16px;
+}
+
+.create-idea-page .create-idea-page-content {
+  display: flex;
+  flex-direction: column;
+  padding-left: 32px;
+}
+
+.create-idea-page .create-idea-page-content .tags-container {
+  display: flex;
+  align-items: center;
+}
+
+.create-idea-page .create-idea-page-content .tags-container > div {
+  margin-left: 8px;
+}
+
+.create-idea-page .create-idea-page-content > div {
+  margin-bottom: 16px;
+}
