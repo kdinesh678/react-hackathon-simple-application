@@ -17,6 +17,7 @@ export function IdeasPage(props) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [expandedIdeas, setExpandedIdeas] = useState([]);
   const open = Boolean(anchorEl);
+
   const handleClick = useCallback((event) => {
     setAnchorEl(event.currentTarget);
   }, []);
@@ -26,16 +27,16 @@ export function IdeasPage(props) {
   }, []);
 
   const sortByCreatedDate = useCallback(() => {
-    const _ideas = ideas.sort(
+    const _ideas = [...ideas].sort(
       (a, b) =>
-        new Date(a.createdDate).getTime() - new Date(b.createdDate).getTime()
+        new Date(b.createdDate).getTime() - new Date(a.createdDate).getTime()
     );
     setIdeas(_ideas);
     setAnchorEl(null);
   }, [ideas]);
 
   const sortByVotes = useCallback(() => {
-    const _ideas = ideas.sort((a, b) => b.votes - a.votes);
+    const _ideas = [...ideas].sort((a, b) => b.votes - a.votes);
     setIdeas(_ideas);
     setAnchorEl(null);
   }, [ideas]);
@@ -64,7 +65,6 @@ export function IdeasPage(props) {
       const idea = ideas.find((idea) => idea.ideaId === id);
 
       const result = updateIdea({ ...idea, votes: idea.votes + 1 });
-
       if (result) {
         setIdeas(result);
       }
@@ -82,6 +82,7 @@ export function IdeasPage(props) {
           aria-haspopup="true"
           aria-expanded={open ? "true" : undefined}
           onClick={handleClick}
+          data-test-marker="button--sort"
         >
           Sort By
         </Button>
@@ -94,13 +95,14 @@ export function IdeasPage(props) {
             "aria-labelledby": "basic-button",
           }}
         >
-          <MenuItem onClick={sortByCreatedDate}>Most Recent</MenuItem>
-          <MenuItem onClick={sortByVotes}>Most Voted</MenuItem>
+          <MenuItem onClick={sortByCreatedDate} data-test-marker="sort--most-recent">Most Recent</MenuItem>
+          <MenuItem onClick={sortByVotes} data-test-marker="sort--most-voted">Most Voted</MenuItem>
         </Menu>
         <Button
           variant="contained"
           onClick={props.goToCreatePage}
           startIcon={<BatchPrediction />}
+          data-test-marker="button--add-new-idea"
         >
           Add new idea
         </Button>

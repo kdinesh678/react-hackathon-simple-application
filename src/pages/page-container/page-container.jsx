@@ -1,4 +1,3 @@
-import { Button } from "@mui/material";
 import React, { useCallback, useMemo } from "react";
 import {
   Redirect,
@@ -6,7 +5,7 @@ import {
   Switch,
   useHistory,
   useRouteMatch,
-} from "react-router";
+} from "react-router-dom";
 import { logout } from "../../external/external-proxy";
 import { getUserDetails } from "../../util";
 import { CreateIdeasPage } from "../create-idea-page/create-idea-page";
@@ -39,7 +38,7 @@ export function PageContainer() {
           <span className="logout" onClick={logoutCallback}>
             Logout
           </span>
-          {username}
+          <span className="username">{username}</span>
         </span>
       </div>
       <div className="content">

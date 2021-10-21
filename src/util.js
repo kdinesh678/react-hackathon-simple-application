@@ -7,6 +7,5 @@ export function getUserDetails() {
 
 export function formatDate(date) {
   const dateObj = new Date(date);
-
-  return `${dateObj.getDate()}-${dateObj.getMonth()}-${dateObj.getYear()}`;
+  return `${dateObj.getDate()}-${dateObj.getMonth()+1}-${dateObj.getFullYear()}`;
 }

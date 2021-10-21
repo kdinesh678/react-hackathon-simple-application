@@ -17,7 +17,7 @@ const _ideas = [
     description:
       "You will use your JavaScript knowledge to create a simple and enjoyable game. There are many games available on the internet that were built through HTML5 and JavaScript. You can start by creating a simple snake game where the player controls the snake and earns a point whenever the snake eats a fruit. The player loses if the snake hits the border (or an obstacle). \nOn the other hand, you can create an advanced game that stands out from the competition, such as a platformer (like Mario) or a puzzle-solving game.  ",
     createdBy: "empId",
-    createdDate: "2021-11-11",
+    createdDate: "2021-11-15",
     votes: 1,
     isActive: true,
     tags: ["feature", "tech"],
@@ -55,8 +55,7 @@ export function addNewIdea({ title, description, tags }) {
     createdBy: username,
   };
 
-  const ideas = window.localStorage.getItem("ideaList");
-  const existingIdeas = ideas ? JSON.parse(ideas) : [];
+  const existingIdeas = getAllIdeas();
 
   window.localStorage.setItem(
     "ideaList",

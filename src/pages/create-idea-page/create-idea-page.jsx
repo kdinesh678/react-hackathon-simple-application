@@ -12,8 +12,9 @@ export function CreateIdeasPage(props) {
   const createIdea = useCallback(() => {
     if (title && description && tags.length) {
       addNewIdea({ title, description, tags });
+      props.goBack();
     }
-  }, [title, description, tags]);
+  }, [title, description, tags, props]);
 
   const setTitleCallback = useCallback((evt) => {
     setTitle(evt.target.value);
@@ -50,15 +51,18 @@ export function CreateIdeasPage(props) {
         </div>
         <div className="create-idea-page-content">
           <TextField
+            data-test-marker="text-field--title"
             label="Title"
             variant="outlined"
             onChange={setTitleCallback}
+            value={title}
           />
           <div className="tags-container">
             <div>Tags</div>
             {["feature", "tech"].map((tag) => {
               return (
                 <Chip
+                  data-test-marker="text-field--tag"
                   id={tag}
                   data-name={tag}
                   label={tag}
@@ -71,14 +75,16 @@ export function CreateIdeasPage(props) {
             })}
           </div>
           <TextField
+            data-test-marker="text-field--description"
             label="Description"
             multiline
             rows={4}
             onChange={setDescriptionCallback}
+            value={description}
           />
         </div>
         <div className="create-idea-page-footer">
-          <Button variant="contained" onClick={createIdea}>
+          <Button data-test-marker="button--create-idea" variant="contained" disabled={!(title && description && tags.length)} onClick={createIdea}>
             Save
           </Button>
         </div>

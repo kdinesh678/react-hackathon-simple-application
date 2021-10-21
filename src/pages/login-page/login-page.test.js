@@ -3,8 +3,12 @@ import { shallow } from "enzyme";
 import { LoginPage } from "./login-page";
 import { login } from "../../external/external-proxy";
 import { Button } from "@mui/material";
+import { useHistory } from "react-router";
 
 jest.mock("../../external/external-proxy");
+jest.mock("react-router");
+
+useHistory.mockReturnValue([]);
 
 describe("Login Page", () => {
   let wrapper;
